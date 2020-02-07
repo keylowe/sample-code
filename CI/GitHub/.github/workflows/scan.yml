@@ -8,8 +8,8 @@ env:
   TL_USER: ${{ secrets.TL_USER }}
   # The password for this user account
   TL_PASS: ${{ secrets.TL_PASS }}
-  # The base URL for the Console -- http://console.<my_company>.com:8083 -- without a trailing /
-  TL_CONSOLE_URL: 
+  # The base URL for the Console -- URL -- without a trailing /
+  TL_CONSOLE_URL: https://us-west1.cloud.twistlock.com/us-3-159209235:8083
   CONTAINER_IMAGE: name/tag:${{ github.sha }}
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       
     - name: Download twistcli from Prisma Cloud Console
       run: |
-        curl -k -u $TL_USER:$TL_PASS --output ./twistcli http://CONSOLEADDRESS/api/v1/util/twistcli
+        curl -k -u $TL_USER:$TL_PASS --output ./twistcli https://us-west1.cloud.twistlock.com/us-3-159209235/api/v1/util/twistcli
         # ...and ensure it's executable.
         sudo chmod a+x ./twistcli
       
